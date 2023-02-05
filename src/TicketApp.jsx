@@ -1,12 +1,13 @@
 import React from "react"
+import { BrowserRouter } from "react-router-dom"
 import { RouterPage } from "./pages/RouterPage"
 
 function TicketApp() {
 
   return (
-    <div >
+    <BrowserRouter >
       <RouterPage />
-    </div>
+    </BrowserRouter>
   )
 }
 

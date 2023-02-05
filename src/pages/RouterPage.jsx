@@ -1,11 +1,15 @@
 import React from 'react'
 
 import {
-    UploadOutlined,
+    UserAddOutlined,
     UserOutlined,
-    VideoCameraOutlined,
+    ReconciliationOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
+import { Link, Route, Routes } from 'react-router-dom';
+import CrearTicket from './CrearTicket';
+import { Turnos } from './Turnos';
+import Ingresar from './Ingresar';
 
 const { Header, Sider, Content } = Layout;
 
@@ -14,7 +18,7 @@ export const RouterPage = () => {
         <Layout style={{
             height: '100vh',
             width: '100vw',
-            margin:'-8px'
+            margin: '-8px'
         }}>
             <Sider >
                 <div className="logo" />
@@ -22,24 +26,18 @@ export const RouterPage = () => {
                     theme="dark"
                     mode="inline"
                     defaultSelectedKeys={['1']}
-                    items={[
-                        {
-                            key: '1',
-                            icon: <UserOutlined />,
-                            label: 'nav 1',
-                        },
-                        {
-                            key: '2',
-                            icon: <VideoCameraOutlined />,
-                            label: 'nav 2',
-                        },
-                        {
-                            key: '3',
-                            icon: <UploadOutlined />,
-                            label: 'nav 3',
-                        },
-                    ]}
-                />
+                >
+                    <Menu.Item key={'1'} icon={<UserOutlined />}>
+                        <Link to={'/ingresar'}>Ingrese</Link>
+                    </Menu.Item>
+                    <Menu.Item key={'2'} icon={<ReconciliationOutlined />}>
+                        <Link to={'/turnos'}>Turnos</Link>
+                    </Menu.Item>
+                    <Menu.Item key={'3'} icon={<UserAddOutlined />}>
+                        <Link to={'/crear'}>Crear ticket</Link>
+                    </Menu.Item>
+                </Menu>
+
             </Sider>
             <Layout className="site-layout">
                 <Content
@@ -49,7 +47,11 @@ export const RouterPage = () => {
                         minHeight: 280,
                     }}
                 >
-                    Content
+                    <Routes>
+                        <Route path='/ingresar' element={<Ingresar />} />
+                        <Route path='/turnos' element={<Turnos />} />
+                        <Route path='/crear' element={<CrearTicket />} />
+                    </Routes>
                 </Content>
             </Layout>
         </Layout>
