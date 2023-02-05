@@ -1,1 +1,4 @@
 /* @import '~antd/dist/andt.css' */
+body{
+  overflow: hidden;
+}
