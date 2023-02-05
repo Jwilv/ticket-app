@@ -10,6 +10,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import CrearTicket from './CrearTicket';
 import { Turnos } from './Turnos';
 import Ingresar from './Ingresar';
+import Escritorio from './Escritorio';
 
 const { Header, Sider, Content } = Layout;
 
@@ -51,6 +52,8 @@ export const RouterPage = () => {
                         <Route path='/ingresar' element={<Ingresar />} />
                         <Route path='/turnos' element={<Turnos />} />
                         <Route path='/crear' element={<CrearTicket />} />
+                        <Route path='/escritorio' element={<Escritorio />} />
+                        <Route path='*' element={<Ingresar />} />
                     </Routes>
                 </Content>
             </Layout>
