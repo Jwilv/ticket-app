@@ -21,7 +21,10 @@ export const RouterPage = () => {
             width: '100vw',
             margin: '-8px'
         }}>
-            <Sider >
+            <Sider 
+            collapsedWidth={'0'}
+            breakpoint='md'
+            >
                 <div className="logo" />
                 <Menu
                     theme="dark"
