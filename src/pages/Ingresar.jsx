@@ -1,10 +1,17 @@
 import React from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Divider, Form, Input, InputNumber, Typography} from 'antd';
+import { SaveOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router';
 
 export default function Ingresar() {
 
+const {Title,Text} = Typography
+
+ const navigate = useNavigate()
+
     const onFinish = (values) => {
         console.log('Success:', values);
+        navigate('/escritorio')
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -12,6 +19,10 @@ export default function Ingresar() {
     };
 
     return (
+        <>
+        <Title level={2}>Ingresar</Title>
+        <Text>Ingrese su nombre y su escritoriio</Text>
+        <Divider />
         <Form
             name="basic"
             labelCol={{ span: 4 }}
@@ -23,26 +34,28 @@ export default function Ingresar() {
             autoComplete={'off'}
         >
             <Form.Item
-                label="Username"
-                name="username"
-                rules={[{ required: true, message: 'Please input your username!' }]}
+                label="Agente"
+                name="agente"
+                rules={[{ required: true, message: 'por favor ingrese su nombre' }]}
             >
                 <Input />
             </Form.Item>
 
             <Form.Item
-                label="Password"
-                name="password"
-                rules={[{ required: true, message: 'Please input your password!' }]}
+                label="Escritorio"
+                name="escritorio"
+                rules={[{ required: true, message: 'ingrese su escritorio' }]}
             >
-                <Input.Password />
+                <InputNumber max={99} min={1}/>
             </Form.Item>
 
             <Form.Item wrapperCol={{ offset: 4, span: 16 }}>
                 <Button type="primary" htmlType="submit" shape='round'>
+                <SaveOutlined />
                     Ingresar
                 </Button>
             </Form.Item>
         </Form>
+        </>
     )
 }
