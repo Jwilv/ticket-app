@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import {
     UserAddOutlined,
@@ -11,10 +11,14 @@ import CrearTicket from './CrearTicket';
 import { Turnos } from './Turnos';
 import Ingresar from './Ingresar';
 import Escritorio from './Escritorio';
+import { UiContext } from '../context/UiContext';
 
 const { Header, Sider, Content } = Layout;
 
 export const RouterPage = () => {
+
+const {ocultarMenu} = useContext(UiContext)
+
     return (
         <Layout style={{
             height: '100vh',
@@ -24,6 +28,7 @@ export const RouterPage = () => {
             <Sider 
             collapsedWidth={'0'}
             breakpoint='md'
+            hidden={ocultarMenu}
             >
                 <div className="logo" />
                 <Menu

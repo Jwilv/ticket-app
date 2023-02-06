@@ -1,6 +1,6 @@
 import React, { Children, createContext, useState } from 'react'
 
-const UiContext = createContext();
+export const UiContext = createContext();
 
 export const UiProvider = ({ children }) => {
 
