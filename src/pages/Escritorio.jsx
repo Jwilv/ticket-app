@@ -1,9 +1,12 @@
 import { Button, Col, Divider, Row, Typography } from 'antd'
 import { CloseCircleOutlined, CaretRightOutlined } from '@ant-design/icons';
 import React from 'react'
+import { useHideMenu } from '../../hooks/useHideMenu';
 
 export default function Escritorio() {
     const { Title, Text } = Typography
+
+    useHideMenu(false);
 
     const exit = () => {
         console.log('salir');
