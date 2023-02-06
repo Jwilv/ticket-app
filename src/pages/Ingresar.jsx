@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Divider, Form, Input, InputNumber, Typography } from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router';
 import { useHideMenu } from '../../hooks/useHideMenu';
+import { getUserStorage } from '../../helpers/getUserStorage';
 
 export default function Ingresar() {
 
     useHideMenu(false);
 
+    const [user] = useState(getUserStorage())
+
+
     const { Title, Text } = Typography
 
     const navigate = useNavigate()
 
-    const onFinish = ({escritorio,agente}) => {
-        localStorage.setItem('escritorio',escritorio);
-        localStorage.setItem('agente',agente);
+    useEffect(() => {
+        if (user.agente && user.escritorio) {
+            navigate('/escritorio')
+        }
+    }, [])
+
+    const onFinish = ({ escritorio, agente }) => {
+        localStorage.setItem('escritorio', escritorio);
+        localStorage.setItem('agente', agente);
         navigate('/escritorio')
     };
 
