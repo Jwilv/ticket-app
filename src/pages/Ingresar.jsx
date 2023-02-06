@@ -12,8 +12,9 @@ export default function Ingresar() {
 
     const navigate = useNavigate()
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    const onFinish = ({escritorio,agente}) => {
+        localStorage.setItem('escritorio',escritorio);
+        localStorage.setItem('agente',agente);
         navigate('/escritorio')
     };
 

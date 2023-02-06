@@ -3,17 +3,17 @@ import { UiContext } from '../src/context/UiContext'
 
 export const useHideMenu = (ocultar) => {
 
-    const { showMenu, hidenMenu } = useContext(UiContext);
+    const { showMenu, hideMenu } = useContext(UiContext);
 
 useEffect(() => {
 
 if(ocultar){
-hidenMenu()
+hideMenu()
 }else{
 showMenu()
 }
 
-}, [ocultar,showMenu,hidenMenu])
+}, [ocultar,showMenu,hideMenu])
 
 
 }

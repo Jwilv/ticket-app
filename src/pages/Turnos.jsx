@@ -47,6 +47,8 @@ export const Turnos = () => {
         },
     ];
 
+    useHideMenu(true)
+
     return (
         <>
             <Title level={1}>Atendiendo al cliente</Title>
