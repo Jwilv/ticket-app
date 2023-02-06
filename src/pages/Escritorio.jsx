@@ -34,9 +34,9 @@ export default function Escritorio() {
         <>
             <Row>
                 <Col span={20}>
-                    <Title level={2}>juan</Title>
+                    <Title level={2}>{user.agente}</Title>
                     <Text>usted esta trabajando en el escritorio: </Text>
-                    <Text type='success'>5</Text>
+                    <Text type='success'>{user.escritorio}</Text>
                 </Col>
                 <Col span={4} aling='right'>
                     <Button
