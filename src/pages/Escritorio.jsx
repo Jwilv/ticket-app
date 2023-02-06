@@ -1,15 +1,29 @@
 import { Button, Col, Divider, Row, Typography } from 'antd'
 import { CloseCircleOutlined, CaretRightOutlined } from '@ant-design/icons';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHideMenu } from '../../hooks/useHideMenu';
+import { getUserStorage } from '../../helpers/getUserStorage';
+import { useNavigate } from 'react-router';
 
 export default function Escritorio() {
     const { Title, Text } = Typography
 
     useHideMenu(false);
 
+    const [user] = useState(getUserStorage())
+
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(!user.agente || !user.escritorio){
+            navigate('/ingresar')
+        }
+    },[])
+
     const exit = () => {
-        console.log('salir');
+        localStorage.clear('agente');
+        localStorage.clear('escritotio')
+        navigate('/ingresar')
     }
 
     const siguienteTicket = () => {
