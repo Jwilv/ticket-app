@@ -1,7 +1,7 @@
 import { Button, Col, Divider, Row, Typography } from 'antd'
 import { CloseCircleOutlined, CaretRightOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react'
-import { useHideMenu } from '../../hooks/useHideMenu';
+import { useHideMenu } from '../hooks/useHideMenu';
 import { getUserStorage } from '../../helpers/getUserStorage';
 import { useNavigate } from 'react-router';
 
