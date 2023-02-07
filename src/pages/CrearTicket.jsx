@@ -1,7 +1,7 @@
 import { Button, Col, Row, Typography } from 'antd'
 import { DownloadOutlined } from '@ant-design/icons'
 import React from 'react'
-import { useHideMenu } from '../../hooks/useHideMenu';
+import { useHideMenu } from '../hooks/useHideMenu';
 
 export default function CrearTicket() {
 

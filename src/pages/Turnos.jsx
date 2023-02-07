@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Col, Divider, List, Row, Tag, Typography } from 'antd'
 import Item from 'antd/es/list/Item';
-import { useHideMenu } from '../../hooks/useHideMenu';
+import { useHideMenu } from '../hooks/useHideMenu';
 
 export const Turnos = () => {
 
