@@ -1,6 +1,6 @@
 import { Button, Col, Row, Typography } from 'antd'
 import { DownloadOutlined } from '@ant-design/icons'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHideMenu } from '../hooks/useHideMenu';
 import { SocketContext } from '../context/SocketContext';
 
@@ -10,11 +10,13 @@ export default function CrearTicket() {
 
     const {socket} = useContext(SocketContext);
 
+    const [ticket, setTicket] = useState(null)
+
     const { Title, Text } = Typography
 
     const newTicket = () => {
         socket.emit('solicitar-ticket',{},(ticket)=>{
-            console.log(ticket);
+            setTicket(ticket);
         })
     }
 
@@ -38,23 +40,27 @@ export default function CrearTicket() {
                     </Button>
                 </Col>
             </Row>
-            <Row style={{ marginTop: 100 }}>
-                <Col
-                    span={14}
-                    offset={6}
-                    style={{ textAlign: 'center' }}
-                >
-                    <Title level={2} >
-                        su numero:
-                    </Title>
-                    <br />
-                    <Text type='success'
-                    style={{fontSize:55}}
+            {
+                ticket && (
+                    <Row style={{ marginTop: 100 }}>
+                    <Col
+                        span={14}
+                        offset={6}
+                        style={{ textAlign: 'center' }}
                     >
-                        55
-                    </Text>
-                </Col>
-            </Row>
+                        <Title level={2} >
+                            su numero:
+                        </Title>
+                        <br />
+                        <Text type='success'
+                        style={{fontSize:55}}
+                        >
+                            {ticket.num}
+                        </Text>
+                    </Col>
+                </Row>
+                )
+            }
         </>
     )
 }
