@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Card, Col, Divider, List, Row, Tag, Typography } from 'antd'
 import Item from 'antd/es/list/Item';
 import { useHideMenu } from '../hooks/useHideMenu';
+import { SocketContext } from '../context/SocketContext';
 
 export const Turnos = () => {
 
@@ -9,9 +10,17 @@ export const Turnos = () => {
 
     const { Title, Text } = Typography
 
-    
+    useHideMenu(true);
 
-    useHideMenu(true)
+    const { socket } = useContext(SocketContext);
+
+    const [tickets, setTickets] = useState([])
+
+    useEffect(() => {
+        socket.on('ticket-asignado', (asignados) => {
+            setTickets(asignados)
+        })
+    }, [socket])
 
     return (
         <>
@@ -19,7 +28,7 @@ export const Turnos = () => {
             <Row>
                 <Col span={12}>
                     <List
-                        dataSource={data.slice(0, 3)}
+                        dataSource={tickets.slice(0, 3)}
                         renderItem={(item) => (
                             <List key={item.agente}>
                                 <Item style={{ fontSize: 23 }}>
@@ -30,7 +39,7 @@ export const Turnos = () => {
                                             <Tag color={'magenta'}>Escritorio: {item.escritorio}</Tag>,
                                         ]}
                                     >
-                                        <Title>Numero: {item.ticketNo}</Title>
+                                        <Title>Numero: {item.num}</Title>
                                     </Card>
                                 </Item>
 
@@ -41,14 +50,14 @@ export const Turnos = () => {
                 <Col span={12}>
                     <Divider>Historial</Divider>
                     <List
-                        dataSource={data.slice(0, 3)}
+                        dataSource={tickets.slice(3)}
                         renderItem={item => (
                             <Item>
                                 <Card
-                                    title={`Numero de ticket: ${item.ticketNo}`}
+                                    title={`Numero de ticket: ${item.num}`}
                                 >
                                     <Text type='secondary'>En el escritorio: </Text>
-                                    <Tag color={'magenta'}> {item.ticketNo}</Tag>
+                                    <Tag color={'magenta'}> {item.num}</Tag>
                                     <Text type='secondary'>Agente: </Text>
                                     <Tag color={'volcano'}> {item.agente}</Tag>
                                 </Card>
