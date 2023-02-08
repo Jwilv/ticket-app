@@ -3,6 +3,7 @@ import { Card, Col, Divider, List, Row, Tag, Typography } from 'antd'
 import Item from 'antd/es/list/Item';
 import { useHideMenu } from '../hooks/useHideMenu';
 import { SocketContext } from '../context/SocketContext';
+import { getHistorial } from '../helpers/getHistorial';
 
 export const Turnos = () => {
 
@@ -21,6 +22,11 @@ export const Turnos = () => {
             setTickets(asignados)
         })
     }, [socket])
+
+useEffect(()=>{
+getHistorial()
+.then(data => setTickets(data))
+},[])
 
     return (
         <>
