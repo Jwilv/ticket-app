@@ -63,7 +63,7 @@ getHistorial()
                                     title={`Numero de ticket: ${item.num}`}
                                 >
                                     <Text type='secondary'>En el escritorio: </Text>
-                                    <Tag color={'magenta'}> {item.num}</Tag>
+                                    <Tag color={'magenta'}> {item.escritorio}</Tag>
                                     <Text type='secondary'>Agente: </Text>
                                     <Tag color={'volcano'}> {item.agente}</Tag>
                                 </Card>
