@@ -3,7 +3,7 @@ import { Button, Divider, Form, Input, InputNumber, Typography } from 'antd';
 import { SaveOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router';
 import { useHideMenu } from '../hooks/useHideMenu';
-import { getUserStorage } from '../../helpers/getUserStorage';
+import { getUserStorage } from '../helpers/getUserStorage';
 
 export default function Ingresar() {
 
